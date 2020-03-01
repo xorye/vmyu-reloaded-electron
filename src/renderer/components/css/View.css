@@ -1,5 +1,6 @@
 .view {
-  overflow-y: scroll;
-  height: 420px;
-  background-color: #e9edef;
+    overflow-y: scroll;
+    height: 100%;
+    background-color: #e9edef;
+    display: table-row;
 }

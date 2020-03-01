@@ -4,19 +4,18 @@ import { Provider } from 'react-redux';
 import { AppContainer } from 'react-hot-loader';
 
 import App from './components/App';
-import store from './store/store';
+import './components/css/index.css';
 
 // Create main element
 const mainElement = document.createElement('div');
+mainElement.id = 'root';
 document.body.appendChild(mainElement);
 
 // Render components
 const render = () => {
     ReactDOM.render(
         <AppContainer>
-            <Provider store={store}>
-                <App />
-            </Provider>
+            <App />
         </AppContainer>,
         mainElement
     );

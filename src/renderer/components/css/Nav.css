@@ -1,46 +1,46 @@
 /* no word wrap for spans */
 span {
-  white-space: pre;
+    white-space: pre;
 }
 
 .nav {
-  height: 60px;
-  background-color: #4e00ea;
-  position: relative;
-  text-align: center;
-  vertical-align: middle;
+    height: 60px;
+    background-color: #4e00ea;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
 }
 .nav:before {
-  content: '';
-  display: inline-block;
-  vertical-align: middle;
-  height: 100%;
+    content: '';
+    display: table-row;
+    vertical-align: middle;
+    height: 100%;
 }
 
 .nav__button_container {
-  display: inline-block;
-  vertical-align: middle;
-  background-color: red;
+    display: inline-block;
+    vertical-align: middle;
+    background-color: red;
 }
 
 .nav__backButton {
-  cursor: pointer;
-  user-select: none;
-  width: 65px;
-  position: absolute;
-  left: 0;
-  top: 15px;
-  color: white;
+    cursor: pointer;
+    user-select: none;
+    width: 65px;
+    position: absolute;
+    left: 0;
+    top: 15px;
+    color: white;
 }
 
 .no-margin-right {
-  margin-right: 0px;
+    margin-right: 0px;
 }
 .nav__text {
-  color: white;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  font-size: 22px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    font-size: 22px;
 }

@@ -1,10 +1,6 @@
-body {
-    margin: 0;
-}
-
 .App {
-    height: 600px;
-    width: 360px;
     position: relative;
-    display: block;
+    display: table;
+    height: 100%;
+    width: 100%;
 }

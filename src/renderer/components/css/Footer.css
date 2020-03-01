@@ -1,13 +1,13 @@
 .footer {
-  height: 60px;
-  width: 360px;
-  position: absolute;
-  bottom: 0;
+    height: 60px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
 }
 
 .footer__text {
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%;
 }

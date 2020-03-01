@@ -15,7 +15,6 @@ class App extends React.Component {
                 <div className="App">
                     <Nav />
                     <View />
-                    <Footer />
                 </div>
             </Provider>
         );
