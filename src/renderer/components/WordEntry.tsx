@@ -90,6 +90,7 @@ export class WordEntry extends React.Component<IProps, IState> {
             <div className="WordEntry" data-word-id={this.props.word.id}>
                 {wordContent}
                 {definitions}
+                {this.props.word.timestamp?.toString()}
                 <Dropdown options={dropdownOptions} />
             </div>
         );

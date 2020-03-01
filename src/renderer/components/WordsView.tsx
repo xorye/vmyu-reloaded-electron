@@ -20,7 +20,9 @@ export class WordsView extends React.Component<WordsViewProps> {
         }
     }
     render() {
-        const resultEntries = this.props.words.map((word: Word) => <WordEntry word={word} />);
+        const resultEntries = this.props.words
+            .sort((wordA, wordB) => wordA.timestamp!.getTime() - wordB.timestamp!.getTime())
+            .map((word: Word) => <WordEntry word={word} />);
         return <div className="WordsView">{resultEntries}</div>;
     }
 }
