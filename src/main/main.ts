@@ -1,6 +1,9 @@
 import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
+// import { onConnection } from './socketServer';
+const socket = require('socket.io');
+import * as express from 'express';
 
 let win: BrowserWindow | null;
 
@@ -41,6 +44,8 @@ const createWindow = async () => {
         });
     }
 
+    onConnection(win);
+
     win.on('closed', () => {
         win = null;
     });
@@ -59,3 +64,19 @@ app.on('activate', () => {
         createWindow();
     }
 });
+
+export function onConnection(win: BrowserWindow) {
+    console.log('sock');
+    const app = express();
+    const server = app.listen(4000, () => {
+        console.log('listening to requests on 4000');
+    });
+
+    const io = socket(server, { serveClient: false });
+    io.on('connection', (socket: any) => {
+        console.log('made socket connection', socket.id);
+        socket.on('REFRESH', (data: any) => {
+            win.webContents.send('REFRESH', data);
+        });
+    });
+}
