@@ -1,0 +1,5 @@
+.view {
+  overflow-y: scroll;
+  height: 420px;
+  background-color: #e9edef;
+}

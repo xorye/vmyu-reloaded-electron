@@ -1,0 +1,17 @@
+.PageEntry {
+  background-color: #ffffff;
+  padding: 10px;
+  margin-bottom: 6px;
+  position: relative;
+  border-radius: 5px;
+}
+
+.page-title {
+  font-size: 20px;
+  display: inline-block;
+  margin-bottom: 0px;
+}
+
+.page-domain {
+  color: #636363;
+}

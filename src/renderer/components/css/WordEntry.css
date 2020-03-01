@@ -1,0 +1,21 @@
+.word {
+  font-size: 25px;
+  display: inline-block;
+  margin-bottom: 0px;
+}
+
+.line {
+  display: block;
+}
+
+.line-input {
+  width: 312px;
+}
+
+.WordEntry {
+  background-color: #ffffff;
+  padding: 10px;
+  margin-bottom: 6px;
+  position: relative;
+  border-radius: 5px;
+}

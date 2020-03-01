@@ -1,0 +1,48 @@
+.searchBar {
+  position: relative;
+  height: 60px;
+}
+
+.searchBar__input {
+  border-radius: 30px;
+  border: solid 1px #626262;
+  padding-left: 15px;
+  height: 35px;
+  width: 260px;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 15px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.searchButton {
+  position: absolute;
+  background-color: #4e00ea;
+  font-size: 40px;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 15px;
+  cursor: pointer;
+  transition: background-color 0.1s ease-in;
+}
+
+.searchButton:hover {
+  background-color: #834cf0;
+}
+
+.searchIcon {
+  color: white;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  user-select: none;
+}
