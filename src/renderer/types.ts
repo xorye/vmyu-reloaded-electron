@@ -12,6 +12,16 @@ export interface Page {
     timestamp?: Date;
 }
 
+export interface Highlight {
+    startOffset: number;
+    endOffset: number;
+    id?: number;
+    pageId: number;
+    wordId: number;
+    highlightedText: string;
+    timestamp?: Date;
+}
+
 export type WordWithContext = Word & { url: string; title: string };
 
 export interface PageWordInfoCache {
