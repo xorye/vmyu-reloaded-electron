@@ -7,6 +7,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
     color: #949494;
+    cursor: pointer;
 }
 
 .SideBar__selected {
