@@ -3,6 +3,7 @@ import { wordsReducer } from './words/reducers';
 import { pagesReducer } from './pages/reducers';
 import { currentUrlReducer } from './currentUrl/reducers';
 import { currentViewReducer } from './currentView/reducers';
+import { navReducer } from './nav/reducers';
 
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
@@ -12,6 +13,7 @@ import { WordsState } from './words/types';
 import { PagesState } from './pages/types';
 import { CurrentUrlState } from './currentUrl/types';
 import { CurrentViewState } from './currentView/types';
+import { NavState } from './nav/types';
 
 const middleware = [thunk];
 
@@ -20,6 +22,7 @@ export interface StoreInterface {
   currentUrl: CurrentUrlState;
   currentView: CurrentViewState;
   pagesStore: PagesState;
+  navStore: NavState
 }
 
 export const loadState = (): StoreInterface | undefined => {
@@ -56,7 +59,8 @@ const rootReducer = combineReducers<StoreInterface>({
   wordsStore: wordsReducer(),
   pagesStore: pagesReducer(),
   currentUrl: currentUrlReducer(prevState ? prevState.currentUrl : undefined),
-  currentView: currentViewReducer(prevState ? prevState.currentView : undefined)
+  currentView: currentViewReducer(prevState ? prevState.currentView : undefined),
+  navStore: navReducer()
 });
 
 const store = createStore(

@@ -23,6 +23,7 @@ const createWindow = async () => {
     }
 
     win = new BrowserWindow({ width: 360, height: 600 });
+    win.setMenuBarVisibility(false)
 
     if (process.env.NODE_ENV !== 'production') {
         process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = '1'; // eslint-disable-line require-atomic-updates
