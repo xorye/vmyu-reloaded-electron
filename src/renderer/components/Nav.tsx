@@ -7,7 +7,6 @@ import { sideBarChanged } from '../store/nav/actions';
 import { ViewEnum } from '../store/currentView/types';
 import { connect } from 'react-redux';
 import { StoreInterface } from '../store/store';
-import { View } from './View';
 import SearchBar from './SearchBar';
 
 interface IProps {
@@ -38,7 +37,7 @@ class Nav extends React.Component<IProps> {
     render() {
         return (
             <div className='Nav'>
-                <button onClick={() => this.props.sideBarChanged()}>B</button>
+                <button onClick={this.props.sideBarChanged}>B</button>
                 <span className='Nav__logo'>VMyu</span>
                 <SearchBar />
             </div >

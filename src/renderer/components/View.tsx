@@ -24,7 +24,7 @@ export class View extends React.Component<IProps> {
 
         const classes = classNames({
             'View': true,
-            'View__shadowed': this.props.sideBarOpened
+            'View__sidebar_opened': this.props.sideBarOpened
         });
 
         return <div className={classes}>{view}</div>;

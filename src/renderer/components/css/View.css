@@ -1,12 +1,13 @@
 .View {
     overflow-y: scroll;
-    height: 100%;
+    height: calc(100% - 55px);
     background-color: #e9edef;
-    display: table-row;
-    transition: filter 0.5s ease;
-   
+    transition: all 0.5s ease;
+    transition-property: filter, padding-left;
+    
 }
 
-.View__shadowed {
+.View__sidebar_opened {
     filter: blur(1.2px) brightness(0.4);
+    padding-left: 275px;
 }
