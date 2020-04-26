@@ -1,0 +1,15 @@
+.SideBarEntry {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 17px;
+    text-align: left;
+    padding-left: 65px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #949494;
+}
+
+.SideBar__selected {
+    color: #4800ff;
+    border-right: 4px solid #4800ff;
+}

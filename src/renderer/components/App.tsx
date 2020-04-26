@@ -4,9 +4,9 @@ import { Provider } from 'react-redux';
 import './css/App.css';
 
 import Nav from './Nav';
-import Footer from './Footer';
 import View from './View';
 import store from '../store/store';
+import SideBar from './SideBar';
 
 class App extends React.Component {
     render() {
@@ -14,6 +14,7 @@ class App extends React.Component {
             <Provider store={store}>
                 <div className="App">
                     <Nav />
+                    <SideBar />
                     <View />
                 </div>
             </Provider>

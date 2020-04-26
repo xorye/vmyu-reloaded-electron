@@ -1,46 +1,18 @@
-/* no word wrap for spans */
-span {
-    white-space: pre;
-}
-
-.nav {
-    height: 60px;
-    background-color: #4e00ea;
+.Nav {
+    background-color: white;
+    height: 55px;
     position: relative;
-    text-align: center;
-    vertical-align: middle;
-}
-.nav:before {
-    content: '';
-    display: table-row;
-    vertical-align: middle;
-    height: 100%;
+    z-index: 99;
+    box-shadow: 0 1px 2px #969696;
+
 }
 
-.nav__button_container {
-    display: inline-block;
-    vertical-align: middle;
-    background-color: red;
-}
-
-.nav__backButton {
-    cursor: pointer;
-    user-select: none;
-    width: 65px;
+.Nav__logo {
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 1px;
     position: absolute;
-    left: 0;
-    top: 15px;
-    color: white;
-}
-
-.no-margin-right {
-    margin-right: 0px;
-}
-.nav__text {
-    color: white;
-    position: absolute;
+    left: 65px;
     top: 50%;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    font-size: 22px;
+    transform: translateY(-50%);
 }

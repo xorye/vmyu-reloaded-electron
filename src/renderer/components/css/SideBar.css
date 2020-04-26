@@ -1,0 +1,14 @@
+.SideBar {
+    background-color: white;
+    height: 100%;
+    width:270px;
+    float:left;
+    padding-top: 25px;
+    position: fixed;
+    transition: transform 0.5s ease;
+    z-index: 80;
+}
+
+.SideBar__hide {
+    transform: translateX(-270px);
+}

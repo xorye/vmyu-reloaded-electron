@@ -1,6 +1,12 @@
-.view {
+.View {
     overflow-y: scroll;
     height: 100%;
     background-color: #e9edef;
     display: table-row;
+    transition: filter 0.5s ease;
+   
+}
+
+.View__shadowed {
+    filter: blur(1.2px) brightness(0.4);
 }

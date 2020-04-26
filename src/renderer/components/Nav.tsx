@@ -3,15 +3,18 @@ import './css/Nav.css';
 import { changeView } from '../store/currentView/actions';
 import { clearWords } from '../store/words/actions';
 import { clearPages } from '../store/pages/actions';
+import { sideBarChanged } from '../store/nav/actions';
 import { ViewEnum } from '../store/currentView/types';
 import { connect } from 'react-redux';
 import { StoreInterface } from '../store/store';
 import { View } from './View';
+import SearchBar from './SearchBar';
 
 interface IProps {
     changeView: (newView: ViewEnum) => any;
     clearWords: () => any;
     clearPages: () => any;
+    sideBarChanged: () => any;
     currentView: ViewEnum;
 }
 
@@ -34,19 +37,11 @@ class Nav extends React.Component<IProps> {
 
     render() {
         return (
-            <div className="nav">
-                {this.getBackButton()}
-                <div className="nav__button_container">
-                    {this.getCurrentTitle()}
-
-                    {/* <div
-            className='nav__button'
-            onClick={() => this.changeView(ViewEnum.PAGES)}
-          >
-            Pages
-          </div> */}
-                </div>
-            </div>
+            <div className='Nav'>
+                <button onClick={() => this.props.sideBarChanged()}>B</button>
+                <span className='Nav__logo'>VMyu</span>
+                <SearchBar />
+            </div >
         );
     }
     getCurrentTitle(): JSX.Element {
@@ -77,5 +72,6 @@ const mapStateToProps = (state: StoreInterface) => ({
 export default connect(mapStateToProps, {
     changeView,
     clearWords,
-    clearPages
+    clearPages,
+    sideBarChanged
 })(Nav);

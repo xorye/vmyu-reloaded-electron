@@ -5,9 +5,11 @@ import './css/View.css';
 import { StoreInterface } from '../store/store';
 import { connect } from 'react-redux';
 import { ViewEnum } from '../store/currentView/types';
+import classNames from 'classnames';
 
 interface IProps {
     currentView: ViewEnum;
+    sideBarOpened: boolean;
 }
 
 export class View extends React.Component<IProps> {
@@ -20,11 +22,17 @@ export class View extends React.Component<IProps> {
             view = <WordsView />;
         }
 
-        return <div className="view">{view}</div>;
+        const classes = classNames({
+            'View': true,
+            'View__shadowed': this.props.sideBarOpened
+        });
+
+        return <div className={classes}>{view}</div>;
     }
 }
 const mapStateToProps = (state: StoreInterface) => ({
-    currentView: state.currentView.view
+    currentView: state.currentView.view,
+    sideBarOpened: state.navStore.sideBarOpened
 });
 
 export default connect(mapStateToProps, {})(View);
