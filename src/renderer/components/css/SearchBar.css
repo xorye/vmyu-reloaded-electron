@@ -21,7 +21,7 @@
   transform: translateY(-50%);
 }
 
-.SearchBar__input:focus, .SearchBar__input:focus{
+.SearchBar__input:focus {
   outline: none;
 }
 
