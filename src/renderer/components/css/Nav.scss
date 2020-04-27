@@ -1,0 +1,29 @@
+$hamburger-layer-width         : 28px;
+$hamburger-layer-border-radius : 0px;
+$hamburger-layer-height        : 2px;
+$hamburger-padding-y           : 18px;
+$hamburger-layer-spacing       : 7px;
+$hamburger-layer-color         : #949494;
+@import 'hamburgers/_sass/hamburgers/hamburgers.scss';
+
+.hamburger:focus {
+    outline: none;
+}
+
+.Nav {
+    background-color: white;
+    height: 55px;
+    position: relative;
+    z-index: 99;
+    box-shadow: 0 1px 2px #969696;
+}
+
+.Nav__logo {
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    position: absolute;
+    left: 65px;
+    top: 50%;
+    transform: translateY(-50%);
+}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './css/Nav.css';
+import './css/Nav.scss';
 import { changeView } from '../store/currentView/actions';
 import { clearWords } from '../store/words/actions';
 import { clearPages } from '../store/pages/actions';
@@ -8,6 +8,7 @@ import { ViewEnum } from '../store/currentView/types';
 import { connect } from 'react-redux';
 import { StoreInterface } from '../store/store';
 import SearchBar from './SearchBar';
+import classNames from 'classnames';
 
 interface IProps {
     changeView: (newView: ViewEnum) => any;
@@ -15,6 +16,7 @@ interface IProps {
     clearPages: () => any;
     sideBarChanged: () => any;
     currentView: ViewEnum;
+    sideBarOpened: boolean;
 }
 
 class Nav extends React.Component<IProps> {
@@ -35,9 +37,18 @@ class Nav extends React.Component<IProps> {
     }
 
     render() {
+        const buttonClasses = classNames({
+            'hamburger': true,
+            'hamburger--3dx': true,
+            'is-active': this.props.sideBarOpened
+        });
         return (
             <div className='Nav'>
-                <button onClick={this.props.sideBarChanged}>B</button>
+                <button className={buttonClasses} onClick={this.props.sideBarChanged} type='button'>
+                    <span className='hamburger-box'>
+                        <span className='hamburger-inner'></span>
+                    </span>
+                </button>
                 <span className='Nav__logo'>VMyu</span>
                 <SearchBar />
             </div >
@@ -65,6 +76,7 @@ class Nav extends React.Component<IProps> {
 }
 
 const mapStateToProps = (state: StoreInterface) => ({
+    sideBarOpened: state.navStore.sideBarOpened,
     currentView: state.currentView.view
 });
 
