@@ -9,5 +9,5 @@
 
 .View__sidebar_opened {
     filter: blur(1.2px) brightness(0.4);
-    padding-left: 275px;
+    /* padding-left: 275px; */
 }

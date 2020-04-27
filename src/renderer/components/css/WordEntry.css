@@ -15,7 +15,10 @@
 .WordEntry {
   background-color: #ffffff;
   padding: 10px;
-  margin-bottom: 6px;
-  position: relative;
-  border-radius: 5px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  float: left;
+  display: block;
+  height: 200px;
+  width: 400px;
 }
