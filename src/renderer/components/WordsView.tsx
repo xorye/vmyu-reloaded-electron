@@ -6,18 +6,21 @@ import WordEntry from './WordEntry';
 import { addWords, changeWordsByUrl } from '../store/words/actions';
 import './css/WordsView.css';
 import Masonry from 'react-masonry-component';
+const stringSimilarity = require('kor-string-similarity');
 
 interface IProps {
     addWords: (words: Word[]) => any;
     changeWordsByUrl: (url: string) => any;
     words: Word[];
     currentUrl: string | undefined;
+    searchQuery: string;
 }
 
 export class WordsView extends React.Component<IProps> {
 
     constructor(props: IProps) {
         super(props);
+        this.getWordEntries = this.getWordEntries.bind(this);
     }
 
     async componentDidMount() {
@@ -25,22 +28,50 @@ export class WordsView extends React.Component<IProps> {
             await this.props.changeWordsByUrl(this.props.currentUrl);
         }
     }
+
+    componentDidUpdate(prev: IProps) {
+        if (this.props.searchQuery !== prev.searchQuery) {
+            this.forceUpdate();
+        }
+    }
+
+    getWordEntries() {
+        return this.props.words
+            .sort((wordA: Word, wordB: Word) => {
+                if (this.props.searchQuery.length === 0) {
+                    return wordA.timestamp!.getTime() - wordB.timestamp!.getTime();
+                }
+                const similarityA: number = stringSimilarity.compareTwoStrings(this.props.searchQuery, wordA.wordString);
+                const similarityB: number = stringSimilarity.compareTwoStrings(this.props.searchQuery, wordB.wordString);
+                return similarityB - similarityA;
+            })
+            .map((word: Word) => <WordEntry word={word} key={word.id} />);
+    }
+
     render() {
         const masonryOptions: Masonry.MasonryOptions = {
             horizontalOrder: true,
             gutter: 10,
             fitWidth: true
         }
-        const resultEntries = this.props.words
-            .sort((wordA, wordB) => wordA.timestamp!.getTime() - wordB.timestamp!.getTime())
-            .map((word: Word) => <WordEntry word={word} />);
+        const resultEntries = this.getWordEntries();
+        const arr = this.props.words
+            .sort((wordA: Word, wordB: Word) => {
+                if (this.props.searchQuery.length === 0) {
+                    return wordA.timestamp!.getTime() - wordB.timestamp!.getTime();
+                }
+                const similarityA: number = stringSimilarity.compareTwoStrings(this.props.searchQuery, wordA.wordString);
+                const similarityB: number = stringSimilarity.compareTwoStrings(this.props.searchQuery, wordB.wordString);
+                return similarityB - similarityA;
+            });
         return <Masonry className='WordsView' options={masonryOptions}>{resultEntries}</Masonry>;
     }
 }
 
 const mapStateToProps = (state: StoreInterface) => ({
     words: state.wordsStore.words,
-    currentUrl: state.currentUrl.url
+    currentUrl: state.currentUrl.url,
+    searchQuery: state.navStore.searchQuery
 });
 
 export default connect(mapStateToProps, { addWords, changeWordsByUrl })(WordsView);
