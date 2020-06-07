@@ -5,10 +5,13 @@ import {
   SideBarChangedAction,
   NavState
 } from './types';
+import { ViewEnum } from '../currentView/types';
+import { View } from '../../components/View';
 
 const initialState: NavState = {
   sideBarOpened: false,
-  searchQuery: ''
+  wordSearchQuery: '',
+  pageSearchQuery: ''
 };
 
 export function navReducer(initialState_?: NavState) {
@@ -18,14 +21,17 @@ export function navReducer(initialState_?: NavState) {
   ): NavState => {
     switch (action.type) {
       case SEARCH_QUERY_CHANGED:
+        const view: ViewEnum = action.view;
         return {
           sideBarOpened: state.sideBarOpened,
-          searchQuery: action.payload
+          wordSearchQuery: view === ViewEnum.WORDS ? action.payload : state.wordSearchQuery,
+          pageSearchQuery: view === ViewEnum.PAGES ? action.payload : state.pageSearchQuery
         };
       case SIDE_BAR_CHANGED:
         return {
           sideBarOpened: !state.sideBarOpened,
-          searchQuery: state.searchQuery
+          wordSearchQuery: state.wordSearchQuery,
+          pageSearchQuery: state.pageSearchQuery
         };
       default:
         return state;

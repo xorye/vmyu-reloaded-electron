@@ -1,12 +1,5 @@
-import {
-  PagesState,
-  AddPageAction,
-  ADD_PAGE,
-  CLEAR_PAGE,
-  FETCH_ALL_PAGES_FROM_DATABASE,
-  ClearPageAction,
-  FetchAllPagesFromDatabaseAction
-} from './types';
+import { AddPageAction, ADD_PAGE, ClearPageAction, CLEAR_PAGE, FetchAllPagesFromDatabaseAction, FETCH_ALL_PAGES_FROM_DATABASE, PagesState, RemovePageAction, REMOVE_PAGE } from './types';
+import { Page } from '../../types';
 
 const initialState: PagesState = {
   pages: []
@@ -15,13 +8,19 @@ const initialState: PagesState = {
 export function pagesReducer(initialState_?: PagesState) {
   return (
     state = initialState_ ? initialState_ : initialState,
-    action: AddPageAction | ClearPageAction | FetchAllPagesFromDatabaseAction
+    action: AddPageAction | RemovePageAction | ClearPageAction | FetchAllPagesFromDatabaseAction
   ): PagesState => {
     switch (action.type) {
       case ADD_PAGE:
         return {
           pages: state.pages.concat(action.payload)
         };
+      case REMOVE_PAGE:
+        return {
+          pages: state.pages.filter((page: Page) => {
+            return page.title !== action.payload.title || page.url !== action.payload.url;
+          })
+        }
       case CLEAR_PAGE:
         return {
           pages: []

@@ -1,6 +1,7 @@
 import { Page } from '../../types';
 
 export const ADD_PAGE = 'ADD_PAGE';
+export const REMOVE_PAGE = 'REMOVE_PAGE';
 export const CLEAR_PAGE = 'CLEAR_PAGE';
 export const FETCH_ALL_PAGES_FROM_DATABASE = 'FETCH_ALL_PAGES_FROM_DATABASE';
 
@@ -10,6 +11,11 @@ export interface PagesState {
 
 export interface AddPageAction {
     type: typeof ADD_PAGE;
+    payload: Page;
+}
+
+export interface RemovePageAction {
+    type: typeof REMOVE_PAGE;
     payload: Page;
 }
 

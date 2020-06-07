@@ -16,3 +16,40 @@
   display: block;
   color: #636363;
 }
+
+.PageEntry__word_count_div {
+  position: absolute;
+  top: 0px;
+  right: 45px;
+  width: 70px;
+  height: 60px;
+  text-align: right;
+  background-color: red;
+}
+
+.PageEntry__button_div {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 300px;
+  height: 30px;
+  text-align: right;
+}
+
+.PageEntry__button {
+  display: inline-block;
+  padding: 4px 10px;
+  margin-left: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.coloured {
+  color: #4800ff;
+  border: solid #4800ff 2px;
+}
+
+.danger {
+  color: #d9534f;
+  border: solid #d9534f 2px;
+}

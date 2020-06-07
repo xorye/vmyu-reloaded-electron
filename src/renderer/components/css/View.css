@@ -4,7 +4,10 @@
     background-color: #e9edef;
     transition: all 0.5s ease;
     transition-property: filter, padding-left;
-    
+    margin-top: 55px;
+    position: fixed;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 .View__sidebar_opened {

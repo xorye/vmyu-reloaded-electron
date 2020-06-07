@@ -1,11 +1,11 @@
 import * as React from 'react';
-import WordsView from './WordsView';
 import PagesView from './PagesView';
 import './css/View.css';
 import { StoreInterface } from '../store/store';
 import { connect } from 'react-redux';
 import { ViewEnum } from '../store/currentView/types';
 import classNames from 'classnames';
+import { WordsView } from './WordsView';
 
 interface IProps {
     currentView: ViewEnum;

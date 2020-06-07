@@ -1,5 +1,6 @@
 .SearchBar {
   background-color: #f2f2f2;
+  /* background-color: red; */
   height: 40px;
   width: 50%;
   position: absolute;
@@ -11,6 +12,8 @@
 
 .SearchBar__input {
   background-color: #f2f2f2;
+  /* background-color: red; */
+
   border: 0;
   height: 35px;
   width: 95%;

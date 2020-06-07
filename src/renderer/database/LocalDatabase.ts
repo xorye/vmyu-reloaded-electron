@@ -1,11 +1,13 @@
 import { IDatabase } from './IDatabase';
-import { Page, Word, Highlight } from '../types';
+import { Page, Word, Highlight, CommonWordsResult } from '../types';
 import axios from 'axios';
+
+const URL = 'http://localhost:3001';
 
 export class LocalDatabase implements IDatabase {
   getWordsByUrl(userId: number, url: string): Promise<Word[]> {
     return axios
-      .get('http://localhost:3001/getWordsByUrl/', {
+      .get(`${URL}/getWordsByUrl/`, {
         params: {
           url: encodeURIComponent(url),
           userId
@@ -25,10 +27,10 @@ export class LocalDatabase implements IDatabase {
         return words;
       });
   }
-  // getHighlightsByEncodedUrl
+
   getHighlightsByEncodedUrl(url: string, userId: number): Promise<Highlight[]> {
     return axios
-      .get('http://localhost:3001/getHighlightsByEncodedUrl/', {
+      .get(`${URL}/getHighlightsByEncodedUrl/`, {
         params: {
           userId,
           url
@@ -56,7 +58,7 @@ export class LocalDatabase implements IDatabase {
     endOffset: number
   ): Promise<{ startOffset: number; endOffset: number }> {
     return axios
-      .get('http://localhost:3001/addHighlight/', {
+      .get(`${URL}/addHighlight/`, {
         params: {
           userId,
           pageId,
@@ -75,7 +77,7 @@ export class LocalDatabase implements IDatabase {
   }
   getPages(userId: number): Promise<Page[]> {
     return axios
-      .get('http://localhost:3001/getPages/', {
+      .get(`${URL}/getPages/`, {
         params: {
           userId
         }
@@ -97,7 +99,7 @@ export class LocalDatabase implements IDatabase {
   }
   async addPage(userId: number, url: string, title: string): Promise<number> {
     return axios
-      .get('http://localhost:3001/addPage/', {
+      .get(`${URL}/addPage/`, {
         params: {
           userId,
           url: encodeURIComponent(url),
@@ -117,7 +119,7 @@ export class LocalDatabase implements IDatabase {
   ): Promise<number> {
     const definitionString: string = definitions.join(';');
     return axios
-      .get('http://localhost:3001/addWord/', {
+      .get(`${URL}/addWord/`, {
         params: {
           userId,
           pageId,
@@ -138,7 +140,7 @@ export class LocalDatabase implements IDatabase {
   ): Promise<number> {
     const definitionString: string = definitions.join(';');
     return axios
-      .get('http://localhost:3001/updateWord/', {
+      .get(`${URL}/updateWord/`, {
         params: {
           userId,
           wordId,
@@ -150,15 +152,28 @@ export class LocalDatabase implements IDatabase {
         return results.data.id;
       });
   }
-
-  removePage(page: Page): Promise<void> {
-    return new Promise<void>(resolve => resolve());
+  removePage(userId: number, page: Page): Promise<number> {
+    return axios
+      .delete(`${URL}/deletePage/`, {
+        params: {
+          userId,
+          url: encodeURIComponent(page.url),
+          title: page.title
+        }
+      })
+      .then(results => {
+        return results.data.id;
+      });
+  }
+  commonWords(userId: number, words: string[], similarityConstant?: number): Promise<CommonWordsResult> {
+    return axios
+      .post(`${URL}/commonWords/`, {
+        userId,
+        words,
+        similarityConstant
+      });
   }
   removeWordFromPage(word: Word, page: Page): Promise<void> {
     return new Promise<void>(resolve => resolve());
   }
-}
-
-function addQuotes(str: string): string {
-  return `"${str}"`;
 }

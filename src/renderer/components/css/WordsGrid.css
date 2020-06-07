@@ -1,0 +1,14 @@
+.WordsGrid {
+  padding: 6px;
+  display: block;
+  position: fixed;
+  /* background-color: red; */
+  margin: 0 auto;
+}
+
+/* clearfix */
+.WordsGrid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
