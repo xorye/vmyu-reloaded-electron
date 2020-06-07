@@ -1,4 +1,4 @@
-import { Page, Word, Highlight } from '../types';
+import { Page, Word, Highlight, CommonWordsResult } from '../types';
 
 export interface IDatabase {
   getWordsByUrl: (userId: number, url: string) => Promise<Word[]>;
@@ -16,6 +16,7 @@ export interface IDatabase {
   ) => Promise<{ startOffset: number; endOffset: number }>;
   getPages: (userId: number) => Promise<Page[]>;
   addPage: (userId: number, url: string, title: string) => Promise<number>;
+  removePage: (userId: number, page: Page) => Promise<number>;
   addWord: (
     userId: number,
     pageId: number,
@@ -28,6 +29,6 @@ export interface IDatabase {
     word: string,
     definitions: string[]
   ) => Promise<number>;
-  removePage: (page: Page) => Promise<void>;
+  commonWords: (userId: number, words: string[], similarityConstant?: number) => Promise<CommonWordsResult>;
   removeWordFromPage: (word: Word, page: Page) => Promise<void>;
 }

@@ -1,14 +1,2 @@
 .WordsView {
-  padding: 6px;
-  display: block;
-  position: relative;
-  /* background-color: red; */
-  margin: 0 auto;
-}
-
-/* clearfix */
-.WordsView:after {
-  content: '';
-  display: block;
-  clear: both;
 }

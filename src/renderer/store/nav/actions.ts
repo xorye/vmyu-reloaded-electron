@@ -1,5 +1,6 @@
 import { SEARCH_QUERY_CHANGED, SIDE_BAR_CHANGED } from './types';
 import { Dispatch } from 'redux';
+import { ViewEnum } from '../currentView/types';
 
 export const sideBarChanged = () => async (
   dispatch: Dispatch
@@ -10,11 +11,12 @@ export const sideBarChanged = () => async (
   });
 };
 
-export const searchQueryChanged = (str: string) => async (
+export const searchQueryChanged = (str: string, view: ViewEnum) => async (
   dispatch: Dispatch
 ): Promise<void> => {
   dispatch({
     type: SEARCH_QUERY_CHANGED,
-    payload: str
+    payload: str,
+    view
   });
 };

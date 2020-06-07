@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { setCurrentUrl } from '../store/currentUrl/actions';
 import { changeView } from '../store/currentView/actions';
 import { ViewEnum } from '../store/currentView/types';
-import { addPages, clearPages, fetchAllPagesFromDatabase } from '../store/pages/actions';
+import { addPages, removePage, clearPages, fetchAllPagesFromDatabase } from '../store/pages/actions';
 import { StoreInterface } from '../store/store';
 import { Page } from '../types';
 import './css/PagesView.css';
@@ -12,6 +12,7 @@ import { PageEntry } from './PageEntry';
 interface PagesViewProps {
     changeView: (newView: ViewEnum) => any;
     addPages: (words: Page[]) => any;
+    removePage: (page: Page) => any;
     setCurrentUrl: (url: string) => any;
     clearPages: () => any;
     fetchAllPagesFromDatabase: () => any;
@@ -36,7 +37,7 @@ export class PagesView extends React.Component<PagesViewProps> {
 
     render() {
         const resultEntries = this.props.pages.map((page: Page) => (
-            <PageEntry page={page} changeView={this.changeToWordView} />
+            <PageEntry removePage={this.props.removePage} page={page} changeView={this.changeToWordView} />
         ));
         return <div className="PagesView">{resultEntries}</div>;
     }
@@ -48,6 +49,7 @@ const mapStateToProps = (state: StoreInterface) => ({
 
 export default connect(mapStateToProps, {
     addPages,
+    removePage,
     changeView,
     setCurrentUrl,
     clearPages,
