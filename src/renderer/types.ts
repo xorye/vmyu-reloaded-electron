@@ -32,6 +32,9 @@ export interface PageWordInfoCache {
 
 export type SimilarityResult = { word: Word, similarity: number };
 
-export type CommonWordsResult = { [key: string]: SimilarityResult[] };
+export interface CommonWordsResult {
+    word: string,
+    similarityResults: SimilarityResult[]
+};
 
 export const USER_ID: number = 1;
