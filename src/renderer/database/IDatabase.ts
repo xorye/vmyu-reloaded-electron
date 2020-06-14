@@ -29,6 +29,6 @@ export interface IDatabase {
     word: string,
     definitions: string[]
   ) => Promise<number>;
-  commonWords: (userId: number, words: string[], similarityConstant?: number) => Promise<CommonWordsResult[]>;
+  commonWords: (userId: number, words: string[], pageUrl: string, similarityConstant?: number) => Promise<CommonWordsResult[]>;
   removeWordFromPage: (word: Word, page: Page) => Promise<void>;
 }

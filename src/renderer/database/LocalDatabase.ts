@@ -165,11 +165,12 @@ export class LocalDatabase implements IDatabase {
         return results.data.id;
       });
   }
-  commonWords(userId: number, words: string[], similarityConstant?: number): Promise<CommonWordsResult[]> {
+  commonWords(userId: number, words: string[], pageUrl: string, similarityConstant?: number): Promise<CommonWordsResult[]> {
     return axios
       .post(`${URL}/commonWords/`, {
         userId,
         words,
+        pageUrl,
         similarityConstant
       });
   }
