@@ -22,7 +22,7 @@ export interface Highlight {
     timestamp?: Date;
 }
 
-export type WordWithContext = Word & { url: string; title: string };
+export type WordWithContext = Word & { pageUrl: string; pageTitle: string };
 
 export interface PageWordInfoCache {
     url: string;
@@ -30,7 +30,7 @@ export interface PageWordInfoCache {
     words: Word[];
 }
 
-export type SimilarityResult = { word: Word, similarity: number };
+export type SimilarityResult = { word: WordWithContext, similarity: number };
 
 export interface CommonWordsResult {
     word: string,
