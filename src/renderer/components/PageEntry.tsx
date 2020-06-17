@@ -51,8 +51,8 @@ export class PageEntry extends React.Component<IProps, IState> {
         const dropdownOptions: DropdownOption[] = this.getDropdownOptions();
         const pageTitle: string = shortenStringIfRequired(this.props.page.title);
         return (
-            <div className="PageEntry" data-page-id={this.props.page.id}>
-                <span className="page-title">{pageTitle}</span>
+            <div className='PageEntry' data-page-id={this.props.page.id}>
+                <a href={this.props.page.url} className='page-title'>{pageTitle}</a>
                 {/* <Dropdown options={dropdownOptions} /> */}
 
                 <div className='PageEntry__word_count_div'>
