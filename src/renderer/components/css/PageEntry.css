@@ -19,14 +19,20 @@
 }
 
 .PageEntry__word_count_div {
-  position: absolute;
-  top: 0px;
-  right: 45px;
-  width: 70px;
-  height: 60px;
-  text-align: right;
-  background-color: red;
+  float: right;
+  height: 44px;
+  text-align: center;
+  line-height: 40px;
 }
+
+.PageEntry__word_count_num_text {
+  font-size: 40px;
+}
+
+.PageEntry__word_count_text {
+  font-size: 20px;
+}
+
 
 .PageEntry__button_div {
   position: absolute;

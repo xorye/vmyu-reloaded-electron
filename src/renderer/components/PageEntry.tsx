@@ -50,13 +50,15 @@ export class PageEntry extends React.Component<IProps, IState> {
     render() {
         const dropdownOptions: DropdownOption[] = this.getDropdownOptions();
         const pageTitle: string = shortenStringIfRequired(this.props.page.title);
+        const numOfWords: number = Math.floor(Math.random() * 11);
         return (
             <div className='PageEntry' data-page-id={this.props.page.id}>
                 <a href={this.props.page.url} className='page-title'>{pageTitle}</a>
                 {/* <Dropdown options={dropdownOptions} /> */}
 
                 <div className='PageEntry__word_count_div'>
-
+                    <span className='PageEntry__word_count_num_text'>{numOfWords}</span>
+                    <span className='PageEntry__word_count_text'> word{numOfWords === 1 ? '' : 's'}</span>
                 </div>
                 <div className='PageEntry__button_div'>
                     <div className='PageEntry__button coloured' onClick={this.viewWords}>View words</div>
