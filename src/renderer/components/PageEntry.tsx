@@ -60,11 +60,12 @@ export class PageEntry extends React.Component<IProps, IState> {
                     <span className='PageEntry__word_count_num_text'>{numOfWords}</span>
                     <span className='PageEntry__word_count_text'> word{numOfWords === 1 ? '' : 's'}</span>
                 </div>
-                <div className='PageEntry__button_div'>
-                    <div className='PageEntry__button coloured' onClick={this.viewWords}>View words</div>
-                    <div className='PageEntry__button danger' onClick={this.removeCurrentPage}>Remove page</div>
+                <div className='PageEntry__footer'>
+                    <span className='PageEntry__domain_name'>{this.state.urlHostName}</span>
+                    <span className='PageEntry__small_button' onClick={this.viewWords}>View words</span>
+                    <span className='PageEntry__small_button' onClick={this.removeCurrentPage}>Delete page</span>
                 </div>
-                <span className="page-domain">{this.state.urlHostName}</span>
+
             </div>
         );
     }

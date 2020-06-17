@@ -13,8 +13,11 @@
   color: black;
 }
 
-.page-domain {
+.PageEntry__footer {
   display: block;
+}
+
+.PageEntry__domain_name {
   color: #636363;
 }
 
@@ -23,6 +26,13 @@
   height: 44px;
   text-align: center;
   line-height: 40px;
+}
+
+.PageEntry__small_button {
+  margin-left: 15px;
+  cursor: pointer;
+  text-decoration: underline;
+  color: #636363;
 }
 
 .PageEntry__word_count_num_text {
