@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app, shell, BrowserWindow } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 // import { onConnection } from './socketServer';
@@ -16,6 +16,13 @@ const installExtensions = async () => {
         extensions.map(name => installer.default(installer[name], forceDownload))
     ).catch(console.log); // eslint-disable-line no-console
 };
+
+// document.addEventListener('click', (event) {
+//     if (event.target.tagName === 'A' && event.target.href.startsWith('http')) {
+//         event.preventDefault()
+//         shell.openExternal(event.target.href)
+//     }
+// })
 
 const createWindow = async () => {
     if (process.env.NODE_ENV !== 'production') {
