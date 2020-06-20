@@ -39,9 +39,8 @@ export class PageEntry extends React.Component<IProps, IState> {
         }
 
         try {
-            const page: Page = { title: this.props.page.title, url: this.props.page.url };
-            await database.removePage(1, page);
-            await this.props.removePage(page);
+            await database.removePage(1, this.props.page);
+            await this.props.removePage(this.props.page);
         } catch (e) {
             // do nothing
         }
@@ -50,7 +49,7 @@ export class PageEntry extends React.Component<IProps, IState> {
     render() {
         const dropdownOptions: DropdownOption[] = this.getDropdownOptions();
         const pageTitle: string = shortenStringIfRequired(this.props.page.title);
-        const numOfWords: number = Math.floor(Math.random() * 11);
+        const numOfWords: number = this.props.page.wordCount;
         return (
             <div className='PageEntry' data-page-id={this.props.page.id}>
                 <a href={this.props.page.url} className='page-title'>{pageTitle}</a>

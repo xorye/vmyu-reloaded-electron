@@ -8,6 +8,7 @@ export interface Word {
 export interface Page {
     url: string;
     title: string;
+    wordCount: number;
     id?: number;
     timestamp?: Date;
 }

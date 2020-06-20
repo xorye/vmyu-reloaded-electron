@@ -91,6 +91,7 @@ export class LocalDatabase implements IDatabase {
             url: row.url,
             title: row.title,
             id: row.id,
+            wordCount: row.wordCount,
             timestamp: new Date(row.timestamp)
           })
         );
