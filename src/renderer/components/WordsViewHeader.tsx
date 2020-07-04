@@ -19,9 +19,11 @@ class WordsViewHeader extends React.Component<IProps> {
     selectChanged(event: React.ChangeEvent<HTMLSelectElement>) {
         let newMode: WordsViewMode;
         if (event.target.value === 'Compact') {
-            newMode = WordsViewMode.Compact
+            newMode = WordsViewMode.Compact;
         } else if (event.target.value === 'Cue card') {
-            newMode = WordsViewMode.CueCard
+            newMode = WordsViewMode.CueCard;
+        } else if (event.target.value === 'Uniform') {
+            newMode = WordsViewMode.Uniform;
         } else {
             return;
         }
@@ -36,6 +38,11 @@ class WordsViewHeader extends React.Component<IProps> {
                     value='Compact'
                     selected={this.props.wordsViewMode === WordsViewMode.Compact}>
                     Compact
+                </option>
+                <option
+                    value='Uniform'
+                    selected={this.props.wordsViewMode === WordsViewMode.Uniform}>
+                    Uniform
                 </option>
                 <option
                     value='Cue card'

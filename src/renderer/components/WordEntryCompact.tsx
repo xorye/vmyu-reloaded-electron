@@ -5,9 +5,12 @@ import WordEntryDefinition from './WordEntryDefinition';
 import { getDatabase } from '../database/getDatabase';
 import { IDatabase } from '../database/IDatabase';
 import Dropdown, { DropdownOption } from './Dropdown';
+import { WordsViewMode } from '../store/words/types';
+import classNames from 'classnames';
 
 interface IProps {
     word: Word;
+    wordsViewMode: WordsViewMode;
 }
 
 interface IState {
@@ -95,8 +98,12 @@ export class WordEntryCompact extends React.Component<IProps, IState> {
     }
 
     render() {
+        const classes = classNames({
+            WordEntryCompact: true,
+            WordEntryCompact__uniform: this.props.wordsViewMode === WordsViewMode.Uniform
+        })
         return (
-            <div className="WordEntryCompact" data-word-id={this.props.word.id}>
+            <div className={classes} data-word-id={this.props.word.id}>
                 {this.getCompactWordEntries()}
             </div>
         );

@@ -7,7 +7,7 @@ export const CLEAR_WORDS = 'CLEAR_WORDS';
 export const CHANGE_WORDS_VIEW_MODE = 'CHANGE_WORDS_VIEW_MODE';
 
 export enum WordsViewMode {
-    Compact, CueCard
+    Compact, CueCard, Uniform
 }
 
 export interface WordsState {

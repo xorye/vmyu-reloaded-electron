@@ -49,8 +49,8 @@ export class WordsGrid extends React.Component<IProps> {
                 return similarityB - similarityA;
             })
             .map((word: Word) => {
-                if (this.props.wordsViewMode === WordsViewMode.Compact) {
-                    return <WordEntryCompact word={word} key={word.id} />;
+                if (this.props.wordsViewMode === WordsViewMode.Compact || this.props.wordsViewMode === WordsViewMode.Uniform) {
+                    return <WordEntryCompact word={word} wordsViewMode={this.props.wordsViewMode} key={word.id} />;
                 } else if (this.props.wordsViewMode === WordsViewMode.CueCard) {
                     return <WordEntryCueCard word={word} key={word.id} />
                 }
