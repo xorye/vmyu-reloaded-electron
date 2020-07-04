@@ -5,31 +5,43 @@ import {
   CHANGE_WORDS,
   ChangeWordsAction,
   CLEAR_WORDS,
-  ClearWordsAction
+  ClearWordsAction,
+  WordsViewMode,
+  CHANGE_WORDS_VIEW_MODE,
+  ChangeWordsViewAction
 } from './types';
 
 const initialState: WordsState = {
-  words: []
+  words: [],
+  wordsViewMode: WordsViewMode.Compact
 };
 
 export function wordsReducer(initialState_?: WordsState) {
   return (
     state = initialState_ ? initialState_ : initialState,
-    action: AddWordsAction | ChangeWordsAction | ClearWordsAction
+    action: AddWordsAction | ChangeWordsAction | ClearWordsAction | ChangeWordsViewAction
   ): WordsState => {
     switch (action.type) {
       case ADD_WORDS:
         return {
-          words: state.words.concat(action.payload)
+          words: state.words.concat(action.payload),
+          wordsViewMode: state.wordsViewMode
         };
       case CHANGE_WORDS:
         return {
-          words: action.payload
+          words: action.payload,
+          wordsViewMode: state.wordsViewMode
         };
       case CLEAR_WORDS:
         return {
-          words: []
+          words: [],
+          wordsViewMode: state.wordsViewMode
         };
+      case CHANGE_WORDS_VIEW_MODE:
+        return {
+          words: state.words,
+          wordsViewMode: action.payload
+        }
       default:
         return state;
     }

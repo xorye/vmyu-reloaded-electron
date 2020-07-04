@@ -1,0 +1,38 @@
+.WordEntryCueCard {
+    background-color: #ffffff;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    height: 200px;
+    width: 400px;
+    box-shadow: 0 1px 2px #969696;
+    position: relative;
+}
+
+.WordEntryCueCard__word {
+    font-size: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.WordEntryCueCard__definition {
+    font-size: 24px;
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+}
+
+
+.WordEntryCueCard:hover > .WordEntryCueCard__definition {
+    display: block;
+}
+
+.WordEntryCueCard:hover > .WordEntryCueCard__word {
+    display: none;
+}

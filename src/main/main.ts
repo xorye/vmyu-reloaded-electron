@@ -17,12 +17,6 @@ const installExtensions = async () => {
     ).catch(console.log); // eslint-disable-line no-console
 };
 
-// document.addEventListener('click', (event) {
-//     if (event.target.tagName === 'A' && event.target.href.startsWith('http')) {
-//         event.preventDefault()
-//         shell.openExternal(event.target.href)
-//     }
-// })
 
 const createWindow = async () => {
     if (process.env.NODE_ENV !== 'production') {

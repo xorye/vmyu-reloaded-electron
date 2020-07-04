@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './css/WordEntry.css';
+import './css/WordEntryCompact.css';
 import { Word, USER_ID } from '../types';
 import WordEntryDefinition from './WordEntryDefinition';
 import { getDatabase } from '../database/getDatabase';
@@ -20,7 +20,7 @@ export interface InputLine {
     line: string;
 }
 
-export class WordEntry extends React.Component<IProps, IState> {
+export class WordEntryCompact extends React.Component<IProps, IState> {
     constructor(props: IProps) {
         super(props);
         this.state = {
@@ -32,6 +32,7 @@ export class WordEntry extends React.Component<IProps, IState> {
         this.saveEditsToDatabase = this.saveEditsToDatabase.bind(this);
         this.inputChanged = this.inputChanged.bind(this);
         this.trimWordAndDefs = this.trimWordAndDefs.bind(this);
+        this.getCompactWordEntries = this.getCompactWordEntries.bind(this);
         this.props.word.definitions.forEach((s: string) => {
             this.state.inputLines.push({ line: s });
         });
@@ -73,7 +74,7 @@ export class WordEntry extends React.Component<IProps, IState> {
         this.setState({ word: event.target.value });
     }
 
-    render() {
+    getCompactWordEntries() {
         const definitions = this.state.inputLines.map((i: InputLine) => (
             <WordEntryDefinition editMode={this.state.editMode} inputLine={i} />
         ));
@@ -81,17 +82,22 @@ export class WordEntry extends React.Component<IProps, IState> {
         const wordContent = this.state.editMode ? (
             <input className="word" defaultValue={this.state.word} onChange={this.inputChanged} />
         ) : (
-            <span className="word">{this.state.word}</span>
-        );
+                <span className="word">{this.state.word}</span>
+            );
 
         const dropdownOptions: DropdownOption[] = this.getDropdownOptions();
+        return <React.Fragment>
+            {wordContent}
+            {definitions}
+            {this.props.word.timestamp?.toString()}
+            <Dropdown options={dropdownOptions} />
+        </React.Fragment>
+    }
 
+    render() {
         return (
-            <div className="WordEntry" data-word-id={this.props.word.id}>
-                {wordContent}
-                {definitions}
-                {this.props.word.timestamp?.toString()}
-                <Dropdown options={dropdownOptions} />
+            <div className="WordEntryCompact" data-word-id={this.props.word.id}>
+                {this.getCompactWordEntries()}
             </div>
         );
     }
@@ -104,10 +110,10 @@ export class WordEntry extends React.Component<IProps, IState> {
         });
         options.push({
             optionText: 'Remove word',
-            optionAction: () => {}
+            optionAction: () => { }
         });
         return options;
     }
 }
 
-export default WordEntry;
+export default WordEntryCompact;

@@ -1,12 +1,53 @@
 import * as React from 'react';
 
 import './css/WordsViewHeader.css';
-import WordsGrid from './WordsGrid';
+import { StoreInterface } from '../store/store';
+import { connect } from 'react-redux';
+import { changeWordsViewMode } from '../store/words/actions';
+import { WordsViewMode } from '../store/words/types';
 
-export class WordsViewHeader extends React.Component {
+interface IProps {
+    changeWordsViewMode: (wordsViewMode: WordsViewMode) => any;
+    wordsViewMode: WordsViewMode;
+}
+
+class WordsViewHeader extends React.Component<IProps> {
+    constructor(props: IProps) {
+        super(props);
+        this.selectChanged = this.selectChanged.bind(this);
+    }
+    selectChanged(event: React.ChangeEvent<HTMLSelectElement>) {
+        let newMode: WordsViewMode;
+        if (event.target.value === 'Compact') {
+            newMode = WordsViewMode.Compact
+        } else if (event.target.value === 'Cue card') {
+            newMode = WordsViewMode.CueCard
+        } else {
+            return;
+        }
+        this.props.changeWordsViewMode(newMode);
+    }
+
     render() {
         return <div className='WordsViewHeader'>
-
+            <span className='WordsViewHeader__text'>View: </span>
+            <select className='WordsViewHeadwer__select' onChange={this.selectChanged}>
+                <option
+                    value='Compact'
+                    selected={this.props.wordsViewMode === WordsViewMode.Compact}>
+                    Compact
+                </option>
+                <option
+                    value='Cue card'
+                    selected={this.props.wordsViewMode === WordsViewMode.CueCard}>
+                    Cue card
+                </option>
+            </select>
         </div >;
     }
 }
+const mapStateToProps = (state: StoreInterface) => ({
+    wordsViewMode: state.wordsStore.wordsViewMode
+});
+
+export default connect(mapStateToProps, { changeWordsViewMode })(WordsViewHeader);

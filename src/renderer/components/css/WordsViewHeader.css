@@ -1,0 +1,21 @@
+.WordsViewHeader {
+    /* background-color: red; */
+    text-align: right;
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 10px;
+}
+
+.WordsViewHeader__text {
+    font-size: 15px;
+}
+
+.WordsViewHeadwer__select {
+    display: inline-block;
+    height: 20px;
+    margin-left: 5px;
+    margin-right: 10px;
+    border:0px;
+    outline:0px;
+    background-color: white
+}

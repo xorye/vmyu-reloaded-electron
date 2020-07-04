@@ -2,10 +2,12 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { StoreInterface } from '../store/store';
 import { Word } from '../types';
-import WordEntry from './WordEntry';
+import WordEntryCompact from './WordEntryCompact';
 import { addWords, changeWordsByUrl } from '../store/words/actions';
 import './css/WordsGrid.css';
 import Masonry from 'react-masonry-component';
+import { WordsViewMode } from '../store/words/types';
+import WordEntryCueCard from './WordEntryCueCard';
 const stringSimilarity = require('kor-string-similarity');
 
 interface IProps {
@@ -14,6 +16,7 @@ interface IProps {
     words: Word[];
     currentUrl: string | undefined;
     searchQuery: string;
+    wordsViewMode: WordsViewMode;
 }
 
 export class WordsGrid extends React.Component<IProps> {
@@ -45,7 +48,13 @@ export class WordsGrid extends React.Component<IProps> {
                 const similarityB: number = stringSimilarity.compareTwoStrings(this.props.searchQuery, wordB.wordString);
                 return similarityB - similarityA;
             })
-            .map((word: Word) => <WordEntry word={word} key={word.id} />);
+            .map((word: Word) => {
+                if (this.props.wordsViewMode === WordsViewMode.Compact) {
+                    return <WordEntryCompact word={word} key={word.id} />;
+                } else if (this.props.wordsViewMode === WordsViewMode.CueCard) {
+                    return <WordEntryCueCard word={word} key={word.id} />
+                }
+            });
     }
 
     render() {
@@ -62,7 +71,8 @@ export class WordsGrid extends React.Component<IProps> {
 const mapStateToProps = (state: StoreInterface) => ({
     words: state.wordsStore.words,
     currentUrl: state.currentUrl.url,
-    searchQuery: state.navStore.wordSearchQuery
+    searchQuery: state.navStore.wordSearchQuery,
+    wordsViewMode: state.wordsStore.wordsViewMode
 });
 
 export default connect(mapStateToProps, { addWords, changeWordsByUrl })(WordsGrid);

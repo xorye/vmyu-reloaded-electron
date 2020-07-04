@@ -1,5 +1,5 @@
 import { Word, USER_ID } from '../../types';
-import { ADD_WORDS, CHANGE_WORDS, CLEAR_WORDS } from './types';
+import { ADD_WORDS, CHANGE_WORDS, CLEAR_WORDS, WordsViewMode, CHANGE_WORDS_VIEW_MODE } from './types';
 import { Dispatch } from 'redux';
 import { getDatabase } from '../../database/getDatabase';
 import { IDatabase } from '../../database/IDatabase';
@@ -29,5 +29,12 @@ export const changeWordsByUrl = (url: string) => async (dispatch: Dispatch): Pro
 export const clearWords = () => async (dispatch: Dispatch): Promise<void> => {
     dispatch({
         type: CLEAR_WORDS
+    });
+};
+
+export const changeWordsViewMode = (wordsView: WordsViewMode) => async (dispatch: Dispatch): Promise<void> => {
+    dispatch({
+        type: CHANGE_WORDS_VIEW_MODE,
+        payload: wordsView
     });
 };

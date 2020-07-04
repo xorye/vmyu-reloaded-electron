@@ -1,6 +1,6 @@
 import React, { Component, ChangeEvent } from 'react';
-import './css/WordEntry.css';
-import { InputLine } from './WordEntry';
+import './css/WordEntryCompact.css';
+import { InputLine } from './WordEntryCompact';
 
 interface IProps {
   editMode: boolean;
@@ -26,8 +26,8 @@ export class WordEntryDefinition extends Component<IProps> {
         onChange={this.inputChanged}
       />
     ) : (
-      <span className='line'>{this.props.inputLine.line}</span>
-    );
+        <span className='line'>{this.props.inputLine.line}</span>
+      );
     return content;
   }
 }
