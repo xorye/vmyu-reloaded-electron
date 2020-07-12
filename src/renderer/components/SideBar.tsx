@@ -42,7 +42,6 @@ export class SideBar extends React.Component<IProps> {
         return <div className={classes}>
             <SideBarEntry text='Pages' isSelected={this.props.currentView === ViewEnum.PAGES} onClick={this.createChangeView(ViewEnum.PAGES)} />
             <SideBarEntry text='Words' isSelected={this.props.currentView === ViewEnum.WORDS} onClick={this.createChangeView(ViewEnum.WORDS)} />
-            <SideBarEntry text='Data' isSelected={false} onClick={() => { }} />
         </div>
     }
 }
