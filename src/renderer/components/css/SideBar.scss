@@ -5,11 +5,11 @@
     float:left;
     padding-top: 25px;
     position: fixed;
-    transition: transform 0.5s ease;
+    /* transition: transform 0.5s ease; */
     z-index: 80;
     top: 55px;
 }
 
 .SideBar__hide {
-    transform: translateX(-270px);
+    transform: translateX(-271px);
 }

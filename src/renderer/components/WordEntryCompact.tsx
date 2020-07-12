@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './css/WordEntryCompact.css';
+import './css/WordEntryCompact.scss';
 import { Word, USER_ID } from '../types';
 import WordEntryDefinition from './WordEntryDefinition';
 import { getDatabase } from '../database/getDatabase';

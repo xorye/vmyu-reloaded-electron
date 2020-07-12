@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './css/SideBarEntry.css';
+import './css/SideBarEntry.scss';
 import classNames from 'classnames';
 import { StoreInterface } from '../store/store';
 import { connect } from 'react-redux';

@@ -6,7 +6,7 @@ import { ViewEnum } from '../store/currentView/types';
 import { addPages, removePage, clearPages, fetchAllPagesFromDatabase } from '../store/pages/actions';
 import { StoreInterface } from '../store/store';
 import { Page } from '../types';
-import './css/PagesView.css';
+import './css/PagesView.scss';
 import { PageEntry } from './PageEntry';
 
 interface PagesViewProps {

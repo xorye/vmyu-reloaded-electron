@@ -1,6 +1,6 @@
 import * as React from 'react';
 import PagesView from './PagesView';
-import './css/View.css';
+import './css/View.scss';
 import { StoreInterface } from '../store/store';
 import { connect } from 'react-redux';
 import { ViewEnum } from '../store/currentView/types';

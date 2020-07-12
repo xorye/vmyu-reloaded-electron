@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import './css/WordsViewHeader.css';
+import './css/WordsViewHeader.scss';
 import { StoreInterface } from '../store/store';
 import { connect } from 'react-redux';
 import { changeWordsViewMode } from '../store/words/actions';

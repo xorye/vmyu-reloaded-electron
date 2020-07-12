@@ -1,5 +1,5 @@
 import React, { Component, ChangeEvent } from 'react';
-import './css/WordEntryCompact.css';
+import './css/WordEntryCompact.scss';
 import { InputLine } from './WordEntryCompact';
 
 interface IProps {

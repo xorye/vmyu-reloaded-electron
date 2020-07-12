@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
 
-import './css/App.css';
+import './css/App.scss';
 
 import Nav from './Nav';
 import View from './View';

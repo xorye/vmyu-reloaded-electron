@@ -4,7 +4,7 @@ import { StoreInterface } from '../store/store';
 import { Word } from '../types';
 import WordEntryCompact from './WordEntryCompact';
 import { addWords, changeWordsByUrl } from '../store/words/actions';
-import './css/WordsGrid.css';
+import './css/WordsGrid.scss';
 import Masonry from 'react-masonry-component';
 import { WordsViewMode } from '../store/words/types';
 import WordEntryCueCard from './WordEntryCueCard';

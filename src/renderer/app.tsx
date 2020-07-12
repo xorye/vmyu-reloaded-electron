@@ -1,11 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 import { AppContainer } from 'react-hot-loader';
 import { shell } from 'electron';
 
 import App from './components/App';
-import './components/css/index.css';
+import './components/css/index.scss';
 import './communication';
 
 document.addEventListener('click', function (event: any) {

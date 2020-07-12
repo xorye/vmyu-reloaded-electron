@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './css/SideBar.css';
+import './css/SideBar.scss';
 import SideBarEntry from './SideBarEntry';
 import { changeView } from '../store/currentView/actions';
 import { clearWords } from '../store/words/actions';

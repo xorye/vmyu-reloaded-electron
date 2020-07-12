@@ -2,8 +2,6 @@
     overflow-y: scroll;
     height: calc(100% - 55px);
     background-color: #e9edef;
-    transition: all 0.5s ease;
-    transition-property: filter, padding-left;
     margin-top: 55px;
     position: fixed;
     width: 100%;
@@ -12,5 +10,4 @@
 
 .View__sidebar_opened {
     filter: blur(1.2px) brightness(0.4);
-    /* padding-left: 275px; */
 }

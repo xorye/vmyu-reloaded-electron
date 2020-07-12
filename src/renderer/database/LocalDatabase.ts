@@ -36,18 +36,7 @@ export class LocalDatabase implements IDatabase {
           url
         }
       })
-      .then(results => {
-        const rows = results.data;
-        // const highlights: Highlight[] = [];
-        // rows.forEach((row: any) =>
-        // highlights.push({
-        //     wordString: row.wordString,
-        //     definitions: row.definitions,
-        //     id: row.id
-        //   })
-        // );
-        return rows;
-      });
+      .then(results => results.data);
   }
   addHighlight(
     userId: number,

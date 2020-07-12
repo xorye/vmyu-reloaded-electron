@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import './css/WordsView.css';
+import './css/WordsView.scss';
 import WordsGrid from './WordsGrid';
 import WordsViewHeader from './WordsViewHeader';
 

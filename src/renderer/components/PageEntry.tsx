@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './css/PageEntry.css';
+import './css/PageEntry.scss';
 import { Page } from '../types';
 import { Dropdown, DropdownOption } from './Dropdown';
 import { shortenStringIfRequired, getDomain } from './utils';

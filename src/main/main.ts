@@ -1,4 +1,4 @@
-import { app, shell, BrowserWindow } from 'electron';
+import { app, BrowserWindow, webFrame } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 // import { onConnection } from './socketServer';

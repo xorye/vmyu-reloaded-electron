@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './css/SearchBar.css';
+import './css/SearchBar.scss';
 import { StoreInterface } from '../store/store';
 import { connect } from 'react-redux';
 import { searchQueryChanged } from '../store/nav/actions';

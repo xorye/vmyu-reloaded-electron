@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './css/Dropdown.css';
+import './css/Dropdown.scss';
 import classNames from 'classnames';
 
 export interface DropdownOption {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './css/Footer.css';
+import './css/Footer.scss';
 
 import { StoreInterface } from '../store/store';
 import { connect } from 'react-redux';

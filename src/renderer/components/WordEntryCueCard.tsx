@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './css/WordEntryCueCard.css';
+import './css/WordEntryCueCard.scss';
 import { Word } from '../types';
 
 interface IProps {
