@@ -2,7 +2,7 @@ import { IDatabase } from './IDatabase';
 import { Page, Word, Highlight, CommonWordsResult } from '../types';
 import axios from 'axios';
 
-const URL = 'http://localhost:3001';
+const URL = 'http://localhost:9000';
 
 export class LocalDatabase implements IDatabase {
   getWordsByUrl(userId: number, url: string): Promise<Word[]> {
@@ -36,7 +36,10 @@ export class LocalDatabase implements IDatabase {
           url
         }
       })
-      .then(results => results.data);
+      .then(results => {
+        const rows = results.data;
+        return rows;
+      });
   }
   addHighlight(
     userId: number,
@@ -58,10 +61,7 @@ export class LocalDatabase implements IDatabase {
         }
       })
       .then(results => {
-        return {
-          startOffset: results.data.startOffset,
-          endOffset: results.data.endOffset
-        };
+        return results.data;
       });
   }
   getPages(userId: number): Promise<Page[]> {
@@ -162,8 +162,24 @@ export class LocalDatabase implements IDatabase {
         words,
         pageUrl,
         similarityConstant
+      })
+      .then(results => {
+        return results.data;
+      })
+  }
+
+  updateHighlight(userId: number, highlightId: number, newWordId: number): Promise<Highlight> {
+    return axios
+      .post(`${URL}/updateHighlightWithWord/`, {
+        userId,
+        highlightId,
+        wordId: newWordId
+      })
+      .then(results => {
+        return results.data;
       });
   }
+
   removeWordFromPage(word: Word, page: Page): Promise<void> {
     return new Promise<void>(resolve => resolve());
   }

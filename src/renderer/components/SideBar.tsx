@@ -32,8 +32,8 @@ export class SideBar extends React.Component<IProps> {
             this.props.changeView(view);
         }
     }
-    render() {
 
+    render() {
         const classes = classNames({
             'SideBar': true,
             'SideBar__hide': !this.props.sideBarOpened
