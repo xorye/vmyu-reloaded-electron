@@ -1,7 +1,7 @@
-import { app, BrowserWindow, webFrame } from 'electron';
+import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
-// import { onConnection } from './socketServer';
+import { onConnection } from './socketServer';
 const socket = require('socket.io');
 import * as express from 'express';
 
@@ -22,8 +22,13 @@ const createWindow = async () => {
     if (process.env.NODE_ENV !== 'production') {
         await installExtensions();
     }
-
-    win = new BrowserWindow({ width: 360, height: 600 });
+    win = new BrowserWindow({
+        show: false,
+        title: 'VMyu',
+        icon: path.join(__dirname, 'icons', 'icon512.png')
+    });
+    win.maximize();
+    win.show();
     win.setMenuBarVisibility(false)
 
     if (process.env.NODE_ENV !== 'production') {
@@ -48,6 +53,10 @@ const createWindow = async () => {
 
     onConnection(win);
 
+    win.on('page-title-updated', (evt) => {
+        evt.preventDefault();
+    });
+
     win.on('closed', () => {
         win = null;
     });
@@ -66,19 +75,3 @@ app.on('activate', () => {
         createWindow();
     }
 });
-
-export function onConnection(win: BrowserWindow) {
-    console.log('sock');
-    const app = express();
-    const server = app.listen(4000, () => {
-        console.log('listening to requests on 4000');
-    });
-
-    const io = socket(server, { serveClient: false });
-    io.on('connection', (socket: any) => {
-        console.log('made socket connection', socket.id);
-        socket.on('REFRESH', (data: any) => {
-            win.webContents.send('REFRESH', data);
-        });
-    });
-}
