@@ -8,6 +8,11 @@
     overflow-x: hidden;
 }
 
+.View__mac {
+    margin-top: 85px;
+    height: calc(100% - 85px)
+}
+
 .View__sidebar_opened {
     filter: blur(1.2px) brightness(0.4);
 }

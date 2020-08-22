@@ -25,6 +25,9 @@ const createWindow = async () => {
     win = new BrowserWindow({
         show: false,
         title: 'VMyu',
+        titleBarStyle: 'hiddenInset',
+        'minHeight': 300,
+        'minWidth': 500,
         icon: path.join(__dirname, 'icons', 'icon512.png')
     });
     win.maximize();

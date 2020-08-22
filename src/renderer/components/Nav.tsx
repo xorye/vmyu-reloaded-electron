@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { StoreInterface } from '../store/store';
 import SearchBar from './SearchBar';
 import classNames from 'classnames';
+import { isMac } from './utils';
 
 interface IProps {
     changeView: (newView: ViewEnum) => any;
@@ -42,15 +43,20 @@ class Nav extends React.Component<IProps> {
             'hamburger--3dx': true,
             'is-active': this.props.sideBarOpened
         });
+
+        const macDragBar = isMac() ? <div className='Nav__mac_drag_bar'></div> : '';
         return (
             <div className='Nav'>
-                <button className={buttonClasses} onClick={this.props.sideBarChanged} type='button'>
-                    <span className='hamburger-box'>
-                        <span className='hamburger-inner'></span>
-                    </span>
-                </button>
-                <span className='Nav__logo'>VMyu</span>
-                <SearchBar />
+                {macDragBar}
+                <div className='Nav__content'>
+                    <button className={buttonClasses} onClick={this.props.sideBarChanged} type='button'>
+                        <span className='hamburger-box'>
+                            <span className='hamburger-inner'></span>
+                        </span>
+                    </button>
+                    <span className='Nav__logo'>VMyu</span>
+                    <SearchBar />
+                </div>
             </div >
         );
     }

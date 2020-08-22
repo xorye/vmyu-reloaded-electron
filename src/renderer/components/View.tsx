@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { ViewEnum } from '../store/currentView/types';
 import classNames from 'classnames';
 import { WordsView } from './WordsView';
+import { isMac } from './utils';
 
 interface IProps {
     currentView: ViewEnum;
@@ -15,7 +16,6 @@ interface IProps {
 export class View extends React.Component<IProps> {
     render() {
         let view;
-
         if (this.props.currentView === ViewEnum.PAGES) {
             view = <PagesView />;
         } else {
@@ -24,6 +24,7 @@ export class View extends React.Component<IProps> {
 
         const classes = classNames({
             'View': true,
+            'View__mac': isMac(),
             'View__sidebar_opened': this.props.sideBarOpened
         });
 

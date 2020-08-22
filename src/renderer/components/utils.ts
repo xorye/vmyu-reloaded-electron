@@ -14,3 +14,7 @@ export function getDomain(url: string) {
     }
     return url;
 }
+
+export function isMac(): boolean {
+    return window.navigator.platform.match(/^Mac/) !== null;
+}

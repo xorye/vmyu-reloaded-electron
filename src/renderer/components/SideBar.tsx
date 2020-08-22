@@ -8,6 +8,7 @@ import { StoreInterface } from '../store/store';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { ViewEnum } from '../store/currentView/types';
+import { isMac } from './utils';
 
 interface IProps {
     changeView: (newView: ViewEnum) => any;
@@ -36,6 +37,7 @@ export class SideBar extends React.Component<IProps> {
     render() {
         const classes = classNames({
             'SideBar': true,
+            'SideBar__mac': isMac(),
             'SideBar__hide': !this.props.sideBarOpened
         });
 

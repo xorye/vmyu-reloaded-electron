@@ -5,9 +5,12 @@
     float:left;
     padding-top: 25px;
     position: fixed;
-    /* transition: transform 0.5s ease; */
     z-index: 80;
     top: 55px;
+}
+
+.SideBar__mac {
+    top: 85px;
 }
 
 .SideBar__hide {
