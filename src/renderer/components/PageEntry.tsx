@@ -21,6 +21,7 @@ export class PageEntry extends React.Component<IProps, IState> {
         super(props);
         this.viewWords = this.viewWords.bind(this);
         this.removeCurrentPage = this.removeCurrentPage.bind(this);
+        this.getDateString = this.getDateString.bind(this);
 
         this.state = {
             urlHostName: getDomain(this.props.page.url)!
@@ -55,7 +56,10 @@ export class PageEntry extends React.Component<IProps, IState> {
                         <a href={this.props.page.url} className='PageEntry__title'>{pageTitle}</a>
                     </div>
                     <div className='PageEntry__footer'>
-                        <span className='PageEntry__footer_text'>{this.props.page.timestamp?.toDateString()}</span>
+                        {this.props.page.timestamp ?
+                            <span className='PageEntry__footer_text'>{this.getDateString(this.props.page.timestamp)}</span>
+                            : ''
+                        }
                         <span className='PageEntry__footer_text'>{this.state.urlHostName}</span>
                         <span className='PageEntry__small_button' onClick={this.viewWords}>View words</span>
                         <span className='PageEntry__small_button' onClick={this.removeCurrentPage}>Delete page</span>
@@ -82,6 +86,10 @@ export class PageEntry extends React.Component<IProps, IState> {
             optionAction: this.viewWords
         });
         return options;
+    }
+
+    getDateString(date: Date): string {
+        return date.toDateString().split(' ').slice(1).join(' ');
     }
 }
 

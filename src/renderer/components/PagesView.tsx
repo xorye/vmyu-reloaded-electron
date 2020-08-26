@@ -43,9 +43,24 @@ export class PagesView extends React.Component<PagesViewProps> {
     }
 }
 
-const mapStateToProps = (state: StoreInterface) => ({
-    pages: state.pagesStore.pages
-});
+const mapStateToProps = (state: StoreInterface) => {
+    const pages: Page[] = state.pagesStore.pages;
+
+    pages.sort((first: Page, second: Page) => {
+        if (!first.timestamp && !second.timestamp) {
+            return first.title.localeCompare(second.title);
+        }
+        if (!second.timestamp) {
+            return -1
+        }
+        if (!first.timestamp) {
+            return 1;
+        }
+        return second.timestamp.getTime() - first.timestamp.getTime();
+    });
+
+    return { pages };
+};
 
 export default connect(mapStateToProps, {
     addPages,
