@@ -55,7 +55,8 @@ export class PageEntry extends React.Component<IProps, IState> {
                         <a href={this.props.page.url} className='PageEntry__title'>{pageTitle}</a>
                     </div>
                     <div className='PageEntry__footer'>
-                        <span className='PageEntry__domain_name'>{this.state.urlHostName}</span>
+                        <span className='PageEntry__footer_text'>{this.props.page.timestamp?.toDateString()}</span>
+                        <span className='PageEntry__footer_text'>{this.state.urlHostName}</span>
                         <span className='PageEntry__small_button' onClick={this.viewWords}>View words</span>
                         <span className='PageEntry__small_button' onClick={this.removeCurrentPage}>Delete page</span>
                     </div>

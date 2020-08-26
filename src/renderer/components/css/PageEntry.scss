@@ -29,12 +29,18 @@
   color: black;
 }
 
+.PageEntry__date_div {
+  display: block;
+}
+
 .PageEntry__footer {
   display: block;
 }
 
-.PageEntry__domain_name {
+.PageEntry__footer_text {
   color: #636363;
+  margin-right: 15px;
+  cursor: default;
 }
 
 .PageEntry__word_count_div {
@@ -45,7 +51,7 @@
 }
 
 .PageEntry__small_button {
-  margin-left: 15px;
+  margin-right: 15px;
   cursor: pointer;
   text-decoration: underline;
   color: #636363;
