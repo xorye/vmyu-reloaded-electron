@@ -56,6 +56,7 @@ class Nav extends React.Component<IProps> {
                     </button>
                     <span className='Nav__logo'>VMyu</span>
                     <SearchBar />
+                    <span className='Nav__name'>David Kwon</span>
                 </div>
             </div >
         );
