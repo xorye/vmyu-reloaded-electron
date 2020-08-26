@@ -8,6 +8,7 @@ import { StoreInterface } from '../store/store';
 import { Page } from '../types';
 import './css/PagesView.scss';
 import { PageEntry } from './PageEntry';
+const stringSimilarity = require('kor-string-similarity');
 
 interface PagesViewProps {
     changeView: (newView: ViewEnum) => any;
@@ -17,6 +18,8 @@ interface PagesViewProps {
     clearPages: () => any;
     fetchAllPagesFromDatabase: () => any;
     pages: Page[];
+
+    searchQuery: string
 }
 
 export class PagesView extends React.Component<PagesViewProps> {
@@ -35,18 +38,7 @@ export class PagesView extends React.Component<PagesViewProps> {
         this.props.clearPages();
     }
 
-    render() {
-        const resultEntries = this.props.pages.map((page: Page) => (
-            <PageEntry removePage={this.props.removePage} page={page} changeView={this.changeToWordView} />
-        ));
-        return <div className="PagesView">{resultEntries}</div>;
-    }
-}
-
-const mapStateToProps = (state: StoreInterface) => {
-    const pages: Page[] = state.pagesStore.pages;
-
-    pages.sort((first: Page, second: Page) => {
+    pageCompare(first: Page, second: Page) {
         if (!first.timestamp && !second.timestamp) {
             return first.title.localeCompare(second.title);
         }
@@ -57,10 +49,29 @@ const mapStateToProps = (state: StoreInterface) => {
             return 1;
         }
         return second.timestamp.getTime() - first.timestamp.getTime();
-    });
+    }
 
-    return { pages };
-};
+    render() {
+        const resultEntries = this.props.pages
+            .sort((pageA: Page, pageB: Page) => {
+                if (this.props.searchQuery.length === 0) {
+                    return this.pageCompare(pageA, pageB);
+                }
+                const similarityA: number = stringSimilarity.compareTwoStrings(this.props.searchQuery, pageA.title);
+                const similarityB: number = stringSimilarity.compareTwoStrings(this.props.searchQuery, pageB.title);
+                return similarityB - similarityA;
+            })
+            .map((page: Page) => (
+                <PageEntry removePage={this.props.removePage} page={page} changeView={this.changeToWordView} />
+            ));
+        return <div className="PagesView">{resultEntries}</div>;
+    }
+}
+
+const mapStateToProps = (state: StoreInterface) => ({
+    pages: state.pagesStore.pages,
+    searchQuery: state.navStore.pageSearchQuery
+});
 
 export default connect(mapStateToProps, {
     addPages,
