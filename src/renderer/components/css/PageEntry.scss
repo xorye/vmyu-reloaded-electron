@@ -4,9 +4,25 @@
   margin-bottom: 6px;
   position: relative;
   border-radius: 5px;
+  display: flex;
 }
 
-.page-title {
+.PageEntry__left_col {
+  flex: 85%;
+  min-width: 0;
+}
+
+.PageEntry__right_col {
+  flex: 15%;
+}
+
+.PageEntry__title_div {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.PageEntry__title {
   font-size: 20px;
   display: inline-block;
   margin-bottom: 0px;

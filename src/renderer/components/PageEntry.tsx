@@ -1,11 +1,10 @@
 import * as React from 'react';
 import './css/PageEntry.scss';
 import { Page } from '../types';
-import { Dropdown, DropdownOption } from './Dropdown';
-import { shortenStringIfRequired, getDomain } from './utils';
+import { DropdownOption } from './Dropdown';
+import { getDomain } from './utils';
 import { getDatabase } from '../database/getDatabase';
 import { IDatabase } from '../database/IDatabase';
-import { removePage } from '../store/pages/actions';
 
 interface IProps {
     changeView: (url: string) => any;
@@ -47,24 +46,26 @@ export class PageEntry extends React.Component<IProps, IState> {
     }
 
     render() {
-        const dropdownOptions: DropdownOption[] = this.getDropdownOptions();
-        const pageTitle: string = shortenStringIfRequired(this.props.page.title);
+        const pageTitle: string = this.props.page.title;
         const numOfWords: number = this.props.page.wordCount;
         return (
             <div className='PageEntry' data-page-id={this.props.page.id}>
-                <a href={this.props.page.url} className='page-title'>{pageTitle}</a>
-                {/* <Dropdown options={dropdownOptions} /> */}
-
-                <div className='PageEntry__word_count_div'>
-                    <span className='PageEntry__word_count_num_text'>{numOfWords}</span>
-                    <span className='PageEntry__word_count_text'> word{numOfWords === 1 ? '' : 's'}</span>
+                <div className='PageEntry__left_col'>
+                    <div className='PageEntry__title_div'>
+                        <a href={this.props.page.url} className='PageEntry__title'>{pageTitle}</a>
+                    </div>
+                    <div className='PageEntry__footer'>
+                        <span className='PageEntry__domain_name'>{this.state.urlHostName}</span>
+                        <span className='PageEntry__small_button' onClick={this.viewWords}>View words</span>
+                        <span className='PageEntry__small_button' onClick={this.removeCurrentPage}>Delete page</span>
+                    </div>
                 </div>
-                <div className='PageEntry__footer'>
-                    <span className='PageEntry__domain_name'>{this.state.urlHostName}</span>
-                    <span className='PageEntry__small_button' onClick={this.viewWords}>View words</span>
-                    <span className='PageEntry__small_button' onClick={this.removeCurrentPage}>Delete page</span>
+                <div className='PageEntry__right_col'>
+                    <div className='PageEntry__word_count_div'>
+                        <span className='PageEntry__word_count_num_text'>{numOfWords}</span>
+                        <span className='PageEntry__word_count_text'> word{numOfWords === 1 ? '' : 's'}</span>
+                    </div>
                 </div>
-
             </div>
         );
     }
