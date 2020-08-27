@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app, nativeImage, BrowserWindow } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 import { onConnection } from './socketServer';
@@ -28,7 +28,7 @@ const createWindow = async () => {
         titleBarStyle: 'hiddenInset',
         'minHeight': 300,
         'minWidth': 500,
-        icon: path.join(__dirname, 'icons', 'icon512.png')
+        icon: path.join(__dirname, 'icons', 'icon256.png')
     });
     win.maximize();
     win.show();
@@ -78,3 +78,10 @@ app.on('activate', () => {
         createWindow();
     }
 });
+
+if (process.platform === 'darwin') {
+    const image = nativeImage.createFromPath(
+        path.join(__dirname, 'icons', 'icon512_mac.png')
+    );
+    app.dock.setIcon(image);
+}
