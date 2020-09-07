@@ -36,6 +36,7 @@ export class WordEntryCompact extends React.Component<IProps, IState> {
         this.inputChanged = this.inputChanged.bind(this);
         this.trimWordAndDefs = this.trimWordAndDefs.bind(this);
         this.getCompactWordEntries = this.getCompactWordEntries.bind(this);
+        this.getDateString = this.getDateString.bind(this);
         this.props.word.definitions.forEach((s: string) => {
             this.state.inputLines.push({ line: s });
         });
@@ -89,12 +90,24 @@ export class WordEntryCompact extends React.Component<IProps, IState> {
             );
 
         const dropdownOptions: DropdownOption[] = this.getDropdownOptions();
+
+        const dateClasses = classNames({
+            'WordEntryCompact__date-text': true,
+            'WordEntryCompact__date-text-bottom': this.props.wordsViewMode === WordsViewMode.Uniform
+        })
+
         return <React.Fragment>
             {wordContent}
             {definitions}
-            {this.props.word.timestamp?.toString()}
+            <span className={dateClasses}>{this.getDateString(this.props.word.timestamp!)}</span>
             <Dropdown options={dropdownOptions} />
         </React.Fragment>
+    }
+
+    getDateString(date: Date) {
+        const dateString: string = date.toDateString();
+        const timeString: string = date.toLocaleTimeString();
+        return `${dateString} ${timeString}`;
     }
 
     render() {
