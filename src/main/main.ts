@@ -2,8 +2,6 @@ import { app, nativeImage, BrowserWindow } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 import { onConnection } from './socketServer';
-const socket = require('socket.io');
-import * as express from 'express';
 
 let win: BrowserWindow | null;
 
