@@ -6,7 +6,7 @@
 
 <table style='border: 0px;'>
 <tr>
-<td vlign="center"><img src='docs/img/logo.png' width='200'></td>
+<td vlign="center"><img src='docs/img/logo_small.png' width='200'></td>
 <td vlign="center"><img src='docs/img/typescript.png' width='200'></td>
 <td vlign="center"><img src='docs/img/chrome.png' width='200'></td>
 <td vlign="center"><img src='docs/img/node.png' width='200'></td>
