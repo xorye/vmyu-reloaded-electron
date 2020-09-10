@@ -6,14 +6,51 @@
 
 <table style='border: 0px;'>
 <tr>
-<td vlign="center"><img src='docs/img/logo_small.png' width='200'></td>
-<td vlign="center"><img src='docs/img/typescript.png' width='200'></td>
-<td vlign="center"><img src='docs/img/chrome.png' width='200'></td>
-<td vlign="center"><img src='docs/img/node.png' width='200'></td>
-<td vlign="center"><img src='docs/img/electron.png' width='200'></td>
-<td vlign="center"><img src='docs/img/react.png' width='200'></td>
-<td vlign="center"><img src='docs/img/postgresql.png' width='200'></td>
-<td vlign="center"><img src='docs/img/docker.png' width='200'></td>
+<td vlign="center">
+    <a href='https://github.com/xorye/vmyu-reloaded-electron'>
+        <img src='docs/img/logo_small.png' width='200'>
+    </a>
+</td>
+<td vlign="center">
+    <a href='https://www.typescriptlang.org'>
+        <img src='docs/img/typescript.png' width='200'>
+    </a>
+</td>
+<td vlign="center">
+    <a href='https://developer.chrome.com/extensions/api_index'>
+        <img src='docs/img/chrome.png' width='200'>
+    </a>
+</td>
+<td vlign="center">
+    <a href='https://nodejs.org/en/'>
+        <img src='docs/img/node.png' width='200'>
+    </a>
+</td>
+<td vlign="center">
+    <a href='https://www.electronjs.org'>
+        <img src='docs/img/electron.png' width='200'>
+    </a>
+</td>
+<td vlign="center">
+    <a href='https://reactjs.org'>
+        <img src='docs/img/react.png' width='200'>
+    </a>
+</td>
+<td vlign="center">
+    <a href='https://redux.js.org'>
+        <img src='docs/img/redux.png' width='200'>
+    </a>
+</td>
+<td vlign="center">
+    <a href='https://www.postgresql.org'>
+        <img src='docs/img/postgresql.png' width='200'>
+    </a>
+</td>
+<td vlign="center">
+    <a href='https://www.docker.com'>
+        <img src='docs/img/docker.png' width='200'>
+    </a>
+</td>
 </tr></table>
 
 ## About
@@ -38,11 +75,11 @@ I reach page 57 when I see the same word again. Ideally when learning a new word
 I'd prefer to see the word again and again so that it can stay in my
 long-term memory.
 
-I then focussed on news articles since they inform about current events/issues
-and they are much shorter therefore it's easier to reread it over and over.
+As a result, I focussed on news articles since they inform about current events/issues
+and they are much shorter therefore easier to reread it over and over.
 
 ### Without VMyu
-Before creating VMyu, the image below depicts my workflow when reading the newspaper.
+The image below depicts my workflow when reading the newspaper before developing VMyu.
 Read, look up word, write definition, repeat.
 It's messy and cumbersome to keep track of words and definitions while
 using a dictionary on my laptop.
@@ -50,17 +87,17 @@ using a dictionary on my laptop.
 ![Without VMyu](docs/img/before.png)
 
 ### With VMyu
-Thanks to VMyu, I'm able to do everything I've done before, but much better.
+VMyu transforms my workflow to new heights with a 100% online experience.
 From Google Chrome, VMyu helps me quickly search and save word definitions, highlight,
 and provide a hover modal over highlighted words.
 ![With VMyu](docs/img/vmyu_chrome.gif)
 
 If there is a word I don't know, I can highlight the word and search for its definition
 using the context menu options provided by VMyu. I can then save the definition and
-highlight the word within the article.
+highlight the word within the article. Highlights persist after refreshing the page.
 ![With VMyu](docs/img/vmyu_chrome_word.gif)
 
-The similar words feature parses the current article's content and checks if it
+The "similar words" feature parses the current article's content and checks if it
 contains words from all articles that I saved definitions for previously.
 This encourages me to create long-term memories for these particular words, since
 I am seeing the same word, but in different articles/contexts.
@@ -69,7 +106,9 @@ I am seeing the same word, but in different articles/contexts.
 
 All saved words, definitions and the links to the news articles they came from,
 can be accessed from the VMyu desktop application.
-Word definitions can be edited as well.
+Words and their definitions can be edited as well, should they be inaccurate.
+Once word definitions are edited, the changes are also available within the
+article's highlight hover content.
 ![With VMyu](docs/img/vmyu_desktop.gif)
 
 <!-- ![With VMyu](docs/img/vmyu_desktop.gif)
@@ -77,30 +116,37 @@ Word definitions can be edited as well.
 
 ## Structure
 VMyu is a combination of three components: the desktop application, the Google Chrome
-extension and a server to handle database requests. Each component communicates
+extension and the server to handle database requests. Each component communicates
 with one another to provide the functionality explained above.
 
 ### Desktop application (Typescript, React, Redux, Electron)
  - Keeps track of articles you've read and the definitions you've saved
- - Cue card feature
+ - Edit saved words and definitions
+ - Cue card feature to help review words and their definitions
 
 ### Google Chrome extension (Typescript)
- - Integrates seamlessly to news websites (currently only supports [news.naver.com](https://news.naver.com))
+ - Seamlessly integrates with news websites (currently only supports [news.naver.com](https://news.naver.com))
  - Quickly search and save word definitions from [en.dict.naver.com](https://en.dict.naver.com/#/main)
  - Displays words that you may have seen before, helping you apply previous knowledge to new contexts
  - Highlight words within news articles, with a hover feature to display definitions
 
-### Server (Typescript, Express.js, MySQL, Docker)
- - Handles database requests
+### Server (Typescript, Express.js, PostgreSQL, Docker)
+ - REST API to handle database requests for creating/deleting articles, words, definitions and highlights
 
 ## Usage
 
 As mentioned above, VMyu is a combination of three components: the desktop application,
-Google Chrome extension and a server to handle database requests.
+the Google Chrome extension and the server to handle database requests.
 If this project gets traction, I'll consider open sourcing the repositories for the Google Chrome extension and server.
 
-I have no plans to deploy this project as its main purpose was to help me learn, refine my skills and
-have fun along the way.
+I have no plans to deploy this project as its main purpose was to help me learn, improve my workflow,
+refine my skills and have fun along the way.
+
+[ReadLang](https://readlang.com) is a web application and Google Chrome extension that
+offers a similar workflow to VMyu, with support for about 60 languages.
+In my experience, support for Korean is not as polished (its in beta mode) compared
+to support for languages like English, French and Spanish.
+This is mainly due to the fact that word spacing in Korean works differently.
 
 ## License
 
