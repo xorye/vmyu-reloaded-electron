@@ -3,7 +3,8 @@ import './css/Footer.scss';
 
 import { StoreInterface } from '../store/store';
 import { connect } from 'react-redux';
-type FooterProps = {
+
+interface FooterProps {
     currentUrl: string | undefined;
 };
 

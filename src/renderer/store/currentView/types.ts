@@ -1,4 +1,4 @@
-export const CHANGE_VIEW = 'CHANGE_VIEW';
+export const CHANGE_VIEW: string = 'CHANGE_VIEW';
 
 export interface CurrentViewState {
   view: ViewEnum;

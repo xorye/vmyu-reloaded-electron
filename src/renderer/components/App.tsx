@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
-
 import './css/App.scss';
-
 import Nav from './Nav';
 import View from './View';
 import store from '../store/store';

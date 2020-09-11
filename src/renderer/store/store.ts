@@ -8,7 +8,7 @@ import { navReducer } from './nav/reducers';
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import * as _ from 'lodash';
+import { throttle } from 'lodash';
 import { WordsState } from './words/types';
 import { PagesState } from './pages/types';
 import { CurrentUrlState } from './currentUrl/types';
@@ -69,7 +69,7 @@ const store = createStore(
 );
 
 store.subscribe(
-  _.throttle(() => {
+  throttle(() => {
     saveState({
       state: store.getState()
     });

@@ -20,7 +20,6 @@ interface IProps {
 }
 
 export class WordsGrid extends React.Component<IProps> {
-
     constructor(props: IProps) {
         super(props);
         this.getWordEntries = this.getWordEntries.bind(this);

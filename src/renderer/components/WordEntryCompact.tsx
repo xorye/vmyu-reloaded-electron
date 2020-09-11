@@ -54,7 +54,9 @@ export class WordEntryCompact extends React.Component<IProps, IState> {
     saveEditsToDatabase(): void {
         const { word, inputLines } = this.trimWordAndDefs();
         const database: IDatabase | undefined = getDatabase();
-        if (!database) return;
+        if (!database) {
+            return;
+        }
         const definitions: string[] = inputLines.map((i: InputLine) => i.line);
         database.updateWord(USER_ID, this.props.word.id!, word, definitions);
     }
@@ -62,9 +64,7 @@ export class WordEntryCompact extends React.Component<IProps, IState> {
     trimWordAndDefs(): { word: string; inputLines: InputLine[] } {
         const trimmedWord: string = this.state.word.trim();
         const trimmedDefs: InputLine[] = this.state.inputLines.map((i: InputLine) => {
-            return {
-                line: i.line.trim()
-            };
+            return { line: i.line.trim() };
         });
 
         this.setState({ word: trimmedWord, inputLines: trimmedDefs });

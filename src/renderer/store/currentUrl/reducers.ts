@@ -1,6 +1,6 @@
 import { CurrentUrlState, SetCurrentUrlAction, SET_CURRENT_URL } from './types';
 
-const initialState: CurrentUrlState = { url: 'www.google.com' };
+const initialState: CurrentUrlState = { url: 'www.google.com' /* placeholder */};
 
 export function currentUrlReducer(initialState_?: CurrentUrlState) {
   return (

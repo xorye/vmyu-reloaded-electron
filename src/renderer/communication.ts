@@ -11,23 +11,13 @@ ipcRenderer.on('REFRESH', async (event: any, data: any) => {
     const state: StoreInterface = store.getState();
     const database: IDatabase | undefined = getDatabase();
     if (state.currentView.view === ViewEnum.WORDS) {
-        let words: Word[];
-        if (database) {
-            words = await database.getWordsByUrl(USER_ID, state.currentUrl.url!);
-        } else {
-            words = [];
-        }
+        const words: Word[] = database ? await database.getWordsByUrl(USER_ID, state.currentUrl.url!) : [];
         store.dispatch({
             type: CHANGE_WORDS,
             payload: words
         });
     } else if (state.currentView.view === ViewEnum.PAGES) {
-        let pages: Page[];
-        if (database) {
-            pages = await database.getPages(USER_ID);
-        } else {
-            pages = [];
-        }
+        const pages: Page[] = database ? await database.getPages(USER_ID) : [];
         store.dispatch({
             type: FETCH_ALL_PAGES_FROM_DATABASE,
             payload: pages

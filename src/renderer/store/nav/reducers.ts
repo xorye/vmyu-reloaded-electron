@@ -6,7 +6,6 @@ import {
   NavState
 } from './types';
 import { ViewEnum } from '../currentView/types';
-import { View } from '../../components/View';
 
 const initialState: NavState = {
   sideBarOpened: false,

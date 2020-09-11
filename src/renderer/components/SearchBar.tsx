@@ -48,7 +48,6 @@ class SearchBar extends React.Component<IProps, IState> {
 
     render() {
         const placeHolder: string = this.props.currentView === ViewEnum.PAGES ? 'pages' : 'words';
-        const defaultVal: string = this.getInputValue(this.props);
         return <div className='SearchBar'>
             <input className='SearchBar__input'
                 type='text'

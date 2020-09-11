@@ -6,15 +6,7 @@ interface IProps {
     word: Word;
 }
 
-interface IState {
-}
-export class WordEntryCueCard extends React.Component<IProps, IState> {
-    constructor(props: IProps) {
-        super(props);
-        this.state = {
-        }
-
-    }
+export class WordEntryCueCard extends React.Component<IProps> {
     render() {
         return (
             <div className='WordEntryCueCard'>

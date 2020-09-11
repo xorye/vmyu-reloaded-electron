@@ -10,7 +10,6 @@ interface IProps {
 export class WordEntryDefinition extends Component<IProps> {
   constructor(props: IProps) {
     super(props);
-
     this.inputChanged = this.inputChanged.bind(this);
   }
 

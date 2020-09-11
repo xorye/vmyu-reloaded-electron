@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import './css/WordsViewHeader.scss';
 import { StoreInterface } from '../store/store';
 import { connect } from 'react-redux';
