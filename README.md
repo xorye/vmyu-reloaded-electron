@@ -1,10 +1,10 @@
 # VMyu - Improving your Korean vocabulary by reading the latest news articles
 
 <p align='center'>
-<img src ='docs/img/vmyu_screenshot.png'>
+    <img src ='docs/img/vmyu_screenshot.png'>
 </p>
 
-<table style='border: 0px;'>
+<table>
 <tr>
 <td vlign="center">
     <a href='https://github.com/xorye/vmyu-reloaded-electron'>
@@ -58,9 +58,6 @@ VMyu is a cross-platform desktop application and Google Chrome extension that ma
 easy to learn and keep track of new Korean vocabulary words from the latest news articles.
 
 This repository contains code for the desktop application only.
-<!--
-### Demo video
-[![Demo](https://img.youtube.com/vi/5qap5aO4i9A/0.jpg)](https://www.youtube.com/watch?v=5qap5aO4i9A) -->
 
 ### Why VMyu? What problem does VMyu solve?
 
@@ -94,7 +91,8 @@ and provide a hover modal over highlighted words.
 
 If there is a word I don't know, I can highlight the word and search for its definition
 using the context menu options provided by VMyu. I can then save the definition and
-highlight the word within the article. Highlights persist after refreshing the page.
+highlight the word within the article. Words, definitions and highlights are stored
+in a database.
 ![With VMyu](docs/img/vmyu_chrome_word.gif)
 
 The "similar words" feature parses the current article's content and checks if it
@@ -111,16 +109,14 @@ Once word definitions are edited, the changes are also available within the
 article's highlight hover content.
 ![With VMyu](docs/img/vmyu_desktop.gif)
 
-<!-- ![With VMyu](docs/img/vmyu_desktop.gif)
-![With VMyu](docs/img/vmyu_common.gif) -->
-
 ## Structure
 VMyu is a combination of three components: the desktop application, the Google Chrome
 extension and the server to handle database requests. Each component communicates
 with one another to provide the functionality explained above.
 
 ### Desktop application (Typescript, React, Redux, Electron)
- - Keeps track of articles you've read and the definitions you've saved
+ - Keeps track of saved articles, words and definitions
+ - Search functionality for saved articles, words and definitions
  - Edit saved words and definitions
  - Cue card feature to help review words and their definitions
 
@@ -137,13 +133,11 @@ with one another to provide the functionality explained above.
 
 As mentioned above, VMyu is a combination of three components: the desktop application,
 the Google Chrome extension and the server to handle database requests.
+This repository only contains source code for the desktop application.
 If this project gets traction, I'll consider open sourcing the repositories for the Google Chrome extension and server.
 
-I have no plans to deploy this project as its main purpose was to help me learn, improve my workflow,
-refine my skills and have fun along the way.
-
 [ReadLang](https://readlang.com) is a web application and Google Chrome extension that
-offers a similar workflow to VMyu, with support for about 60 languages.
+offers a different, but in many ways, a similar workflow to VMyu, with support for about 60 languages.
 In my experience, support for Korean is not as polished (its in beta mode) compared
 to support for languages like English, French and Spanish.
 This is mainly due to the fact that word spacing in Korean works differently.
