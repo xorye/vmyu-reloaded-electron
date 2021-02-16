@@ -61,6 +61,14 @@ In my experience, support for Korean is not as polished (it is in beta mode) com
 to support for languages like English, French and Spanish.
 This is mainly due to the fact that word spacing in Korean works differently.
 
-## License
+## Demo
+More available on [davidkwon.me/blog/hello-world-introducing-vmyu](https://davidkwon.me/blog/hello-world-introducing-vmyu).
+<p align='center'>
+    <img src ='docs/img/1.gif'>
+</p>
+<p align='center'>
+    <img width='255' src ='docs/img/2.gif'>
+</p>
 
+## License
 Licensed under the [GNU General Public License v3.0](LICENSE.md) license.
